@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Ensure that the .htaccess file can be used
+    Options -Indexes
+    Options +FollowSymLinks
+
+    # Allow the URL to be rewritten to index.php
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Redirect all requests to index.php, maintaining the URL structure
+    RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+</IfModule>
